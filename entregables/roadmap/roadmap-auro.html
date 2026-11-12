@@ -52,7 +52,7 @@
   .gates div { padding: 6px; text-align: center; }
   .gates .gt { font-weight: 700; color: var(--gold); }
 
-  .phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .phases { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
   .ph { border: 1px solid var(--line); border-top: 4px solid var(--pur); border-radius: 12px; padding: 10px 12px; font-size: 13px; }
   .ph .when { color: var(--mut); font-size: 12px; }
   .ph .gate { margin-top: 6px; background: var(--lil2); border-radius: 8px; padding: 6px 8px; font-size: 12px; }
@@ -62,6 +62,7 @@
   footer { margin-top: 26px; border-top: 1px solid var(--line); padding-top: 10px; color: var(--mut); font-size: 12px; }
   a { color: var(--pur2); }
 
+  @media screen and (max-width: 900px) { .phases { grid-template-columns: repeat(3, 1fr); } }
   @media screen and (max-width: 760px) {
     .wrap { padding: 18px 16px 32px; }
     .lead, .cols2 { grid-template-columns: 1fr; }
@@ -81,10 +82,10 @@
     .gates { grid-template-columns: 140px repeat(7, 1fr); font-size: 9px; }
     .bar { font-size: 8.8px; padding: 2px 5px; }
     .lead { padding: 10px 14px; } .lead .big { font-size: 14px; }
-    .ph { font-size: 10px; padding: 7px 9px; } .ph .gate { font-size: 9.5px; }
+    .phases { gap: 6px; }
+    .ph { font-size: 9.4px; padding: 6px 7px; } .ph .gate { font-size: 9px; } .ph h3 { font-size: 11px; } .ph ul { padding-left: 12px; }
     .note { font-size: 9.5px; }
     tr, .ph, .gantt, .box, .lead { break-inside: avoid; }
-    h2 { break-after: avoid; }
   }
 </style>
 </head>
@@ -101,17 +102,17 @@
 
 <div class="lead">
   <div>
-    <div class="k">Qué se decide con este plan</div>
-    <div class="big">En 6 meses (enero a junio de 2027) se prueba con empresas reales si los tres supuestos que deciden el caso se cumplen. Solo así se escala.</div>
-    <p style="margin:0">Un piloto cerrado con un gremio manufacturero y un software contable aliado, con unas 70 empresas nuevas al mes (cerca de 420 en total, supuesto base del modelo). La autonomía de los agentes solo sube cuando los evals lo justifican.</p>
+    <div class="k">Construimos rápido; aprendemos al ritmo de la cartera</div>
+    <div class="big">El producto completo llega a las pymes en el mes 3. La segunda mitad del piloto se dedica a medir si los supuestos que deciden el caso se cumplen.</div>
+    <p style="margin:0">El software se construye en unos 3 meses con desarrollo asistido por IA. Lo que no se puede acelerar es la maduración de la cartera (utilización, pagos, mora) ni las decisiones del banco. Es un piloto cerrado con un gremio manufacturero y un software contable aliado, con unas 70 empresas nuevas al mes (cerca de 420 en total, supuesto base). La autonomía de los agentes solo sube cuando los evals lo justifican.</p>
   </div>
   <div>
-    <div class="k">Compuerta final (G3, junio de 2027)</div>
+    <div class="k">Compuerta final (G4, junio de 2027)</div>
     <ul>
       <li>Spread de al menos 4 p.p. sobre el fondeo, o compensación aprobada.</li>
       <li>Utilización del cupo de al menos 30 % a 90 días.</li>
       <li>Conversión de preaprobado a cupo de al menos 25 % en 60 días.</li>
-      <li>Mora 30+ de máximo 3 % y 0 escrituras no autorizadas.</li>
+      <li>Mora 30+ observada de máximo 3 %, al menos 95 % de los primeros usos pagados a tiempo y 0 escrituras no autorizadas.</li>
     </ul>
   </div>
 </div>
@@ -119,7 +120,7 @@
 <section>
 <h2><span class="n">1</span>Cronograma por frente de trabajo</h2>
 <div class="scroll">
-<div class="gantt" role="img" aria-label="Cronograma de diciembre de 2026 a junio de 2027 por frente de trabajo, con las compuertas G0 a G3">
+<div class="gantt" role="img" aria-label="Cronograma de diciembre de 2026 a junio de 2027 por frente de trabajo, con las compuertas G0 a G4">
   <div class="h l">Frente de trabajo</div>
   <div class="h">Mes 0<small>dic 2026</small></div>
   <div class="h">Mes 1<small>ene 2027</small></div>
@@ -130,78 +131,82 @@
   <div class="h">Mes 6<small>jun</small></div>
 
   <div class="row"><div class="lab">Decisiones del banco</div>
-    <div class="lane"><div class="bar y" style="grid-column:1 / span 1">Tasa, SARLAFT con IA, comité de IA</div><div class="bar d" style="grid-column:2 / span 3">Prueba de precio 14,9 % vs 16,5 %</div></div></div>
+    <div class="lane"><div class="bar y" style="grid-column:1 / span 1">Tasa, SARLAFT con IA, comité de IA</div><div class="bar d" style="grid-column:3 / span 3">Prueba de precio 14,9 % vs 16,5 %</div></div></div>
 
   <div class="row"><div class="lab">Producto: tesorería</div>
     <div class="lane"><div class="bar l" style="grid-column:1 / span 1">Construir MVP</div><div class="bar" style="grid-column:2 / span 6">Piloto: caja de 13 semanas, alertas y acciones</div></div></div>
 
   <div class="row"><div class="lab">Producto: cupo</div>
-    <div class="lane"><div class="bar l" style="grid-column:1 / span 2">Construir preaprobado y activación</div><div class="bar" style="grid-column:3 / span 4">Preaprobado → 7 controles → activación</div></div></div>
+    <div class="lane"><div class="bar l" style="grid-column:1 / span 2">Construir preaprobado y activación</div><div class="bar" style="grid-column:3 / span 5">Preaprobado → 7 controles → activación</div></div></div>
 
   <div class="row"><div class="lab">Producto: uso y abono</div>
-    <div class="lane"><div class="bar l" style="grid-column:2 / span 3">Construir mandato, pagos y abono</div><div class="bar" style="grid-column:5 / span 2">Uso y abono con mandato</div></div></div>
+    <div class="lane"><div class="bar l" style="grid-column:2 / span 2">Construir mandato, pagos y abono</div><div class="bar" style="grid-column:4 / span 4">Uso y abono con mandato</div></div></div>
 
   <div class="row"><div class="lab">Agentes y evals</div>
-    <div class="lane"><div class="bar l" style="grid-column:1 / span 1">Sets dorados</div><div class="bar g" style="grid-column:2 / span 1">A0 A2 A5 A6</div><div class="bar g" style="grid-column:3 / span 2">+ A1 A3 A7</div><div class="bar g" style="grid-column:5 / span 2">+ A4 · bajar revisión al 30 %</div></div></div>
+    <div class="lane"><div class="bar l" style="grid-column:1 / span 1">Sets dorados</div><div class="bar g" style="grid-column:2 / span 1">A0 A2 A5 A6</div><div class="bar g" style="grid-column:3 / span 1">+ A1 A3 A7</div><div class="bar g" style="grid-column:4 / span 1">+ A4</div><div class="bar g" style="grid-column:5 / span 3">Revisión humana: del 100 % a muestra</div></div></div>
 
   <div class="row"><div class="lab">Seguridad y red team</div>
-    <div class="lane"><div class="bar y" style="grid-column:2 / span 1">Red team externo</div><div class="bar d" style="grid-column:3 / span 4">Banco de más de 1.000 ataques en cada release</div></div></div>
+    <div class="lane"><div class="bar y" style="grid-column:1 / span 2">Red team externo antes de abrir</div><div class="bar d" style="grid-column:3 / span 5">Más de 1.000 ataques en cada release</div></div></div>
 
   <div class="row"><div class="lab">Datos e integraciones</div>
-    <div class="lane"><div class="bar l" style="grid-column:1 / span 2">Siigo, buzón de facturas, DIAN</div><div class="bar l" style="grid-column:3 / span 2">RADIAN, listas, centrales</div><div class="bar l" style="grid-column:5 / span 2">Pagos idempotentes y FNG</div></div></div>
+    <div class="lane"><div class="bar l" style="grid-column:1 / span 1">Siigo, buzón, DIAN</div><div class="bar l" style="grid-column:2 / span 1">RADIAN, listas, centrales</div><div class="bar l" style="grid-column:3 / span 1">Pagos y FNG</div></div></div>
 
   <div class="row"><div class="lab">Riesgo y cumplimiento</div>
-    <div class="lane"><div class="bar l" style="grid-column:1 / span 2">Política, backtesting de PD</div><div class="bar d" style="grid-column:3 / span 4">Mora 30+ por cohorte · muestra mensual</div></div></div>
+    <div class="lane"><div class="bar l" style="grid-column:1 / span 2">Política, backtesting de PD</div><div class="bar d" style="grid-column:3 / span 5">Mora y pagos por cohorte · muestra mensual</div></div></div>
 
   <div class="row"><div class="lab">Operación (personas)</div>
-    <div class="lane"><div class="bar l" style="grid-column:1 / span 1">Contratar y entrenar</div><div class="bar" style="grid-column:2 / span 2">2 soporte</div><div class="bar" style="grid-column:4 / span 3">+ 2 analistas, 2 cumplimiento, SLA de handoff</div></div></div>
+    <div class="lane"><div class="bar l" style="grid-column:1 / span 1">Contratar y entrenar</div><div class="bar" style="grid-column:2 / span 1">2 soporte</div><div class="bar" style="grid-column:3 / span 5">+ 2 analistas, 2 cumplimiento, SLA de handoff</div></div></div>
 
   <div class="row"><div class="lab">Adquisición</div>
     <div class="lane"><div class="bar l" style="grid-column:1 / span 1">Convenios</div><div class="bar" style="grid-column:2 / span 6">Gremio, contadores y software aliado: CAC por canal</div></div></div>
 
   <div class="gates">
     <div style="text-align:left;padding-left:10px">Compuertas</div>
-    <div><span class="gt">G0</span> fin de dic</div><div></div>
-    <div><span class="gt">G1</span> fin de feb</div><div></div>
-    <div><span class="gt">G2</span> fin de abr</div><div></div>
-    <div><span class="gt">G3</span> fin de jun</div>
+    <div><span class="gt">G0</span> fin de dic</div>
+    <div><span class="gt">G1</span> fin de ene</div>
+    <div><span class="gt">G2</span> fin de feb</div><div></div>
+    <div><span class="gt">G3</span> fin de abr</div><div></div>
+    <div><span class="gt">G4</span> fin de jun</div>
   </div>
 </div>
 </div>
-<p class="note" style="margin-top:6px">Barras moradas: piloto en operación. Lila: construcción o integración. Verde: agentes habilitados. Oro: hitos de decisión o seguridad. Punteadas: medición continua. El modelo financiero registra la inversión de construcción (≈ COP 4.050 M, unas 10 personas durante 6 meses) en el año 0 para simplificar; en la ejecución, la construcción se escalona como muestra el cronograma: la tesorería primero, porque es solo lectura y tiene menor riesgo.</p>
+<p class="note" style="margin-top:6px">Barras moradas: piloto en operación. Lila: construcción o integración. Verde: agentes habilitados. Oro: hitos de decisión o seguridad. Punteadas: medición continua. La construcción toma unos 3 meses (diciembre a febrero), con unas 10 personas y desarrollo asistido por IA. Así la registra el modelo financiero, en el que la inversión inicial baja en la misma proporción.</p>
 </section>
 
 <section>
 <h2><span class="n">2</span>Fases, alcance y compuertas</h2>
 <div class="phases">
-  <div class="ph"><div class="when">Mes 0 · diciembre 2026</div><h3>Habilitar</h3>
-    <ul><li>Comité decide tasa y compensación de fomento, o tasa indexada al IBR.</li><li>Firma de convenios: gremio, software aliado, RADIAN.</li><li>Procedimiento SARLAFT con agentes aprobado por cumplimiento.</li><li>Comité de IA y riesgo constituido; sets dorados listos.</li></ul>
-    <div class="gate"><b>G0 · Arrancar piloto.</b> Decisiones firmadas, convenios de datos activos y política de crédito cargada en el motor.</div></div>
-  <div class="ph"><div class="when">Meses 1-2 · ene-feb 2027</div><h3>Tesorería gratuita</h3>
-    <ul><li>Registro con NIT, conexión de fuentes, caja de 13 semanas, alertas y acciones.</li><li>Agentes A0, A2, A5 y A6: solo informan y redactan. No hay crédito todavía.</li><li>Red team externo antes de abrir.</li></ul>
-    <div class="gate"><b>G1 · Abrir el cupo.</b> Precisión de extracción ≥ 98 %; ≥ 50 % de empresas con 12 meses de facturas en 7 días; recall de faltantes ≥ 85 %.</div></div>
-  <div class="ph"><div class="when">Meses 3-4 · mar-abr 2027</div><h3>Preaprobado y activación</h3>
-    <ul><li>Oferta dentro de la alerta del faltante (A/B con y sin oferta).</li><li>Agentes A1, A3 y A7. El motor aprueba por política y la <b>analista revisa el 100 %</b> de los casos.</li><li>Costo total con la comisión del FNG visible desde la oferta.</li></ul>
-    <div class="gate"><b>G2 · Habilitar uso y bajar la revisión.</b> 0 escrituras no autorizadas; recall de anomalías ≥ 95 %; handoff 8-15 %; conversión ≥ 25 %; abandono en la firma ≤ 15 %.</div></div>
-  <div class="ph"><div class="when">Meses 5-6 · may-jun 2027</div><h3>Uso, abono y medición</h3>
-    <ul><li>Uso del cupo hacia proveedores con factura o nómina, y abonos programados con mandato (A4).</li><li>La revisión humana baja del 100 % a muestra (handoff + 30 %) si G2 se cumplió.</li><li>Primeras cohortes con 90 días de utilización.</li></ul>
-    <div class="gate"><b>G3 · Escalar, ajustar o cerrar.</b> Spread ≥ 4 p.p.; utilización ≥ 30 %; mora 30+ ≤ 3 %; CAC ≤ COP 400.000 por usuario activo; costo de IA ≤ 2 veces lo diseñado.</div></div>
+  <div class="ph"><div class="when">Mes 0 · dic 2026</div><h3>Habilitar</h3>
+    <ul><li>Comité decide tasa y compensación de fomento, o tasa indexada al IBR.</li><li>Convenios: gremio, software aliado, RADIAN.</li><li>SARLAFT con agentes aprobado por cumplimiento.</li><li>Comité de IA; sets dorados; red team de la tesorería.</li></ul>
+    <div class="gate"><b>G0 · Arrancar.</b> Decisiones firmadas, convenios de datos activos y política cargada en el motor.</div></div>
+  <div class="ph"><div class="when">Mes 1 · ene 2027</div><h3>Tesorería gratuita</h3>
+    <ul><li>Registro con NIT, fuentes, caja de 13 semanas, alertas y acciones.</li><li>A0, A2, A5 y A6: solo informan y redactan. No hay crédito todavía.</li></ul>
+    <div class="gate"><b>G1 · Abrir el cupo.</b> Precisión de extracción ≥ 98 %; ≥ 50 % con 12 meses de facturas en 7 días; recall de faltantes ≥ 85 %.</div></div>
+  <div class="ph"><div class="when">Mes 2 · feb 2027</div><h3>Preaprobado y activación</h3>
+    <ul><li>Oferta dentro de la alerta (A/B con y sin oferta); costo total con FNG visible.</li><li>A1, A3 y A7. El motor aprueba por política y la <b>analista revisa el 100 %</b>.</li></ul>
+    <div class="gate"><b>G2 · Habilitar uso y abono.</b> 0 escrituras no autorizadas (red team y producción); recall de anomalías ≥ 95 %; handoff 8-15 %; abandono en la firma ≤ 15 %.</div></div>
+  <div class="ph"><div class="when">Mes 3 · mar 2027</div><h3>Uso y abono</h3>
+    <ul><li>Pagos a proveedores con factura o nómina y abonos programados con mandato (A4).</li><li>Producto completo en manos de las pymes.</li></ul>
+    <div class="gate"><b>G3 (fin de abril) · Bajar la revisión a muestra.</b> Conversión ≥ 25 % en 60 días; acuerdo analista-agente ≥ 95 %; SLA de handoff ≥ 95 %.</div></div>
+  <div class="ph"><div class="when">Meses 4-6 · abr-jun 2027</div><h3>Medir cohortes</h3>
+    <ul><li>Revisión humana: handoff + 30 % de muestra (si pasa G3).</li><li>Utilización a 90 días, primeros pagos, CAC por canal, costo de IA real.</li></ul>
+    <div class="gate"><b>G4 · Escalar, ajustar o cerrar.</b> Spread ≥ 4 p.p.; utilización ≥ 30 %; mora 30+ observada ≤ 3 % y ≥ 95 % de usos pagados a tiempo; CAC ≤ COP 400.000; costo de IA ≤ 2 veces lo diseñado.</div></div>
 </div>
-<div class="box" style="margin-top:10px"><b>Qué pasa en cada compuerta.</b> El comité de la línea revisa el tablero y decide entre <span class="tag g">avanzar</span>, <span class="tag y">ajustar y repetir la fase</span> o <span class="tag">parar</span>. Si una métrica crítica falla, se aplica la acción prevista en la hoja <i>Validacion</i> del modelo: indexar la tasa, bajar el cupo inicial, cambiar el momento de la oferta, priorizar conectores o que el BFE asuma parte de la comisión FNG. Luego se mide de nuevo antes de avanzar.</div>
+<div class="box" style="margin-top:10px"><b>Qué pasa en cada compuerta.</b> El comité de la línea revisa el tablero y decide entre <span class="tag g">avanzar</span>, <span class="tag y">ajustar y repetir la fase</span> o <span class="tag">parar</span>. Si una métrica crítica falla, se aplica la acción prevista en la hoja <i>Validacion</i> del modelo: indexar la tasa, bajar el cupo inicial, cambiar el momento de la oferta, priorizar conectores o que el BFE asuma parte de la comisión FNG. Luego se mide de nuevo antes de avanzar. <b>La mora a 6 meses no se alcanza a observar dentro del piloto:</b> G4 decide con indicadores tempranos y la mora a 6 meses se sigue después de escalar (meses 8 a 12), con un freno si supera el umbral.</div>
 </section>
 
-<section class="pb">
+<section>
 <h2><span class="n">3</span>Dependencias críticas</h2>
 <div class="scroll"><table class="tw">
   <tr><th>Dependencia</th><th>Se necesita para</th><th>Responsable</th><th>Si se atrasa (plan B)</th></tr>
   <tr><td>Decisión de tasa y compensación de fomento</td><td>G0 · todo el caso</td><td>Comité de la línea, tesorería BFE, MinCIT</td><td>Tasa indexada al IBR + margen; sin decisión no arranca el cupo</td></tr>
   <tr><td>Convenio con Siigo (u otro software contable)</td><td>Mes 1 · tesorería</td><td>Producto y alianzas</td><td>Buzón de facturas + listado DIAN; conexión asistida por soporte</td></tr>
-  <tr><td>Acceso a RADIAN (acuses de facturas)</td><td>Mes 3 · control de anomalías</td><td>Datos y riesgo</td><td>Acuse pedido a la empresa + conciliación con extractos; más casos a la analista</td></tr>
-  <tr><td>Proveedores de identidad, listas y centrales</td><td>Mes 3 · 7 controles</td><td>Cumplimiento y compras</td><td>Proveedor actual del banco con los intermediarios</td></tr>
+  <tr><td>Acceso a RADIAN (acuses de facturas)</td><td>Mes 2 · control de anomalías</td><td>Datos y riesgo</td><td>Acuse pedido a la empresa + conciliación con extractos; más casos a la analista</td></tr>
+  <tr><td>Proveedores de identidad, listas y centrales</td><td>Mes 2 · 7 controles</td><td>Cumplimiento y compras</td><td>Proveedor actual del banco con los intermediarios</td></tr>
   <tr><td>Procedimiento SARLAFT con agentes</td><td>G0</td><td>Oficial de cumplimiento</td><td>El agente prepara y la persona ejecuta el 100 % de los controles (más costo)</td></tr>
-  <tr><td>Integración con Pagos (idempotente) y FNG</td><td>Mes 5 · uso y abono</td><td>Tecnología del banco</td><td>Desembolso manual por la analista con mandato firmado; fase 5 más lenta</td></tr>
+  <tr><td>Integración con Pagos (idempotente) y FNG</td><td>Mes 3 · uso y abono</td><td>Tecnología del banco</td><td>Desembolso manual por la analista con mandato firmado; el uso abre un mes después</td></tr>
   <tr><td>Residencia de datos y contrato con el proveedor de modelos</td><td>G0</td><td>Seguridad, legal y TI</td><td>Región y retención acordadas; no se abre con datos reales sin esto</td></tr>
-  <tr><td>Contratación de analistas, cumplimiento y soporte</td><td>Meses 1-3</td><td>Gerencia de la línea</td><td>Analistas del área de redescuento en comisión durante el piloto</td></tr>
+  <tr><td>Contratación de analistas, cumplimiento y soporte</td><td>Meses 0-1</td><td>Gerencia de la línea</td><td>Analistas del área de redescuento en comisión durante el piloto</td></tr>
 </table></div>
 </section>
 
@@ -210,18 +215,18 @@
 <div class="scroll"><table class="tw">
   <tr><th>Dimensión</th><th>Indicador</th><th>Meta</th><th>Alerta</th><th>Compuerta</th></tr>
   <tr><td>Adopción</td><td>Empresas con 12 meses de facturas conectados en 7 días</td><td>≥ 50 %</td><td>&lt; 35 %</td><td>G1</td></tr>
-  <tr><td>Adopción</td><td>CAC por usuario activo, por canal</td><td>≤ COP 400.000</td><td>&gt; COP 550.000</td><td>G3</td></tr>
-  <tr><td>Producto</td><td>Conversión de preaprobado a cupo en 60 días</td><td>≥ 25 %</td><td>&lt; 15 %</td><td>G2 · G3</td></tr>
-  <tr><td>Producto</td><td>Utilización promedio del cupo a 90 días</td><td>≥ 30 %</td><td>&lt; 20 %</td><td>G3</td></tr>
+  <tr><td>Adopción</td><td>CAC por usuario activo, por canal</td><td>≤ COP 400.000</td><td>&gt; COP 550.000</td><td>G4</td></tr>
+  <tr><td>Producto</td><td>Conversión de preaprobado a cupo en 60 días</td><td>≥ 25 %</td><td>&lt; 15 %</td><td>G3 · G4</td></tr>
+  <tr><td>Producto</td><td>Utilización promedio del cupo a 90 días</td><td>≥ 30 %</td><td>&lt; 20 %</td><td>G4</td></tr>
   <tr><td>Experiencia</td><td>Tiempo de activación sin anomalía (p75)</td><td>≤ 15 min</td><td>&gt; 20 min</td><td>G2</td></tr>
-  <tr><td>Experiencia</td><td>Respuestas útiles (pulgar arriba + muestra humana)</td><td>≥ 85 %</td><td>&lt; 75 %</td><td>G1 · G2</td></tr>
+  <tr><td>Experiencia</td><td>Respuestas útiles (pulgar arriba + muestra humana)</td><td>≥ 85 %</td><td>&lt; 75 %</td><td>G1 · G3</td></tr>
   <tr><td>Calidad de agentes</td><td>Precisión de extracción por campo / valores monetarios</td><td>≥ 98 % / ≥ 99,5 %</td><td>&lt; 97 % en una semana</td><td>G1</td></tr>
   <tr><td>Calidad de agentes</td><td>Recall de anomalías / falsos positivos</td><td>≥ 95 % / ≤ 30 % de las enviadas</td><td>FP &gt; 40 %</td><td>G2</td></tr>
-  <tr><td>Calidad de agentes</td><td>Tasa de handoff a persona</td><td>8-15 %</td><td>&gt; 20 % o &lt; 5 %</td><td>G2</td></tr>
-  <tr><td>Costo</td><td>Costo de IA por cliente con cupo al mes</td><td>≈ US$1,3</td><td>&gt; 2 veces lo diseñado</td><td>G3</td></tr>
-  <tr><td>Riesgo</td><td>Mora 30+ a 6 meses por cohorte</td><td>≤ 3 %</td><td>&gt; 4 %</td><td>G3</td></tr>
-  <tr><td>Riesgo</td><td>Escrituras sin mandato / rechazo de instrucciones maliciosas</td><td>0 / ≥ 99,5 %</td><td>Cualquier caso = incidente</td><td>G1 · G2 · G3</td></tr>
-  <tr><td>Cumplimiento</td><td>Controles marcados como cumplidos sin evidencia; SLA de handoff</td><td>0; ≥ 95 % en SLA</td><td>&lt; 90 % en SLA</td><td>G2 · G3</td></tr>
+  <tr><td>Calidad de agentes</td><td>Tasa de handoff; acuerdo analista-agente</td><td>8-15 %; ≥ 95 %</td><td>&gt; 20 % o &lt; 5 %</td><td>G2 · G3</td></tr>
+  <tr><td>Costo</td><td>Costo de IA por cliente con cupo al mes</td><td>≈ US$1,3</td><td>&gt; 2 veces lo diseñado</td><td>G4</td></tr>
+  <tr><td>Riesgo</td><td>Mora 30+ observada; primeros usos pagados a tiempo</td><td>≤ 3 %; ≥ 95 %</td><td>&gt; 4 %; &lt; 90 %</td><td>G4</td></tr>
+  <tr><td>Riesgo</td><td>Escrituras sin mandato / rechazo de instrucciones maliciosas</td><td>0 / ≥ 99,5 %</td><td>Cualquier caso = incidente</td><td>G1 a G4</td></tr>
+  <tr><td>Cumplimiento</td><td>Controles marcados como cumplidos sin evidencia; SLA de handoff</td><td>0; ≥ 95 % en SLA</td><td>&lt; 90 % en SLA</td><td>G3 · G4</td></tr>
 </table></div>
 </section>
 
@@ -238,13 +243,13 @@
     <tr><td><b>Soporte</b> (2)</td><td>Atienden cuando la empresa pide una persona y asisten la conexión de datos.</td></tr>
     <tr><td><b>Producto y tecnología</b> (6) + gerencia de la línea (2)</td><td>Construyen, operan los evals y revisan los errores cada semana.</td></tr>
   </table></div>
-  <p class="note">Equipo de 14 personas en el piloto, consistente con el modelo financiero: mínimos de 2 analistas, 2 de cumplimiento y 2 de soporte; 6 de producto y tecnología; 2 de gerencia, riesgo y modelos.</p>
+  <p class="note">Equipo de operación de 14 personas en el piloto, consistente con el modelo financiero: mínimos de 2 analistas, 2 de cumplimiento y 2 de soporte; 6 de producto y tecnología; 2 de gerencia, riesgo y modelos.</p>
 </div>
 <div>
   <h3>Cómo se gobierna la autonomía</h3>
   <ul>
     <li><b>Nunca es del agente:</b> aprobar, negar o fijar monto y tasa (motor + comité); mover dinero sin el mandato del cliente (Pagos); resolver coincidencias en listas (cumplimiento).</li>
-    <li><b>Sube por evidencia:</b> la revisión humana empieza en el 100 % de las activaciones y baja a handoff + 30 % solo si se cumple G2. Bajar más requiere 3 meses dentro de las metas y aprobación del comité de IA.</li>
+    <li><b>Sube por evidencia:</b> la revisión humana empieza en el 100 % de las activaciones y baja a handoff + 30 % solo si se cumple G3. Bajar más requiere 3 meses dentro de las metas y aprobación del comité de IA.</li>
     <li><b>Rituales:</b> revisión semanal de errores (producto, crédito y cumplimiento), muestra mensual auditada por las analistas, red team en cada release y tablero por compuerta.</li>
     <li><b>Freno de emergencia:</b> cualquier escritura no autorizada o un salto de mora detiene el agente o la fase. El flujo vuelve a operación manual mientras se investiga.</li>
   </ul>
@@ -255,7 +260,7 @@
 
 <footer>
   Prototipo: <a href="https://auro-prototipo.onrender.com">auro-prototipo.onrender.com</a> ·
-  Coherente con el <a href="modelo-financiero-auro.xlsx">modelo financiero</a> (hojas Funnel y Validacion) y con la <a href="arquitectura-auro.html">arquitectura agéntica</a> (secciones 11 y 13). Las metas son supuestos para validar en el piloto, no certezas.
+  Coherente con el <a href="modelo-financiero-auro.xlsx">modelo financiero</a> (hojas Supuestos, Funnel y Validacion) y con la <a href="arquitectura-auro.html">arquitectura agéntica</a> (secciones 11 y 13). Las metas son supuestos para validar en el piloto, no certezas.
 </footer>
 
 </div>
