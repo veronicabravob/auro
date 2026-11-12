@@ -28,6 +28,45 @@ PAGES = {
     "43fbf74d-98e5-424c-b33e-10fe0035b049": ["Abono.dc.html"],
 }
 
+# Correcciones de cifras para que el prototipo cuadre con el modelo financiero.
+# Intereses con tasa efectiva: monto * (1,149^(dias/365) - 1).
+#   $12 M a 60 dias = 277.130 ; $14 M a 60 dias = 323.319 ; $12 M a 90 dias = 418.086 ;
+#   $12 M a 30 dias (lo que se ahorra al abonar un mes antes) = 137.774.
+# Tasa de referencia de mercado: tope en la usura de nov-2026 (28,34 %).
+# Comision FNG: se muestra en la oferta (costo total ~18,5 % E.A., supuesto del modelo).
+FIXES = {
+    "2d4d0f04-acc3-449a-9a83-4d8549d435c4": [
+        ("$298.000", "$277.000", 1),
+        ("La comisión de garantía se muestra al firmar.",
+         "Con la comisión de la garantía pública (FNG), que pagas tú, el costo total es cerca de 18,5 % E.A.", 1),
+    ],
+    "9202b114-dc82-43a9-abed-a34861d9bbf2": [
+        ("$298.000", "$277.000", 1),
+        ("$447.000", "$418.000", 1),
+        ("$149.000", "$138.000", 1),
+    ],
+    "43fbf74d-98e5-424c-b33e-10fe0035b049": [
+        ("$149.000", "$138.000", 2),
+    ],
+    "0f906788-39ab-482b-b998-8c7e725d6740": [
+        ("$348.000", "$323.000", 1),
+    ],
+    "f2bddd9a-dc98-41e5-ada4-339dc4a9db41": [
+        ("22,5 % a 28,9 % E.A.", "22,5 % a 28,3 % E.A.", 1),
+        ('<div style="font-size: 20px; font-weight: 600">50 %</div>',
+         '<div style="font-size: 20px; font-weight: 600">50 %</div>'
+         '<div style="font-size: 13px; color: #FFFFFF; opacity: 0.92">FNG · comisión a tu cargo; costo total ≈ 18,5 % E.A.</div>', 1),
+    ],
+}
+
+def apply_fixes(uuid, tpl):
+    for old, new, count in FIXES.get(uuid, []):
+        found = tpl.count(old)
+        if found != count:
+            raise SystemExit(f"{uuid}: se esperaban {count} '{old}', hay {found}")
+        tpl = tpl.replace(old, new)
+    return tpl
+
 def block(html, name):
     m = re.search(r'(<script type="__bundler/' + name + r'">\s*)(.*?)(\s*</script>)', html, re.S)
     if not m:
@@ -52,7 +91,7 @@ def main(src, out):
             data = gzip.decompress(data)
         page = data.decode("utf-8")
         m = block(page, "template")
-        tpl = json.loads(m.group(2))
+        tpl = apply_fixes(uuid, json.loads(m.group(2)))
         tpl = re.sub(r"(<head[^>]*>)", lambda h: h.group(1) + inject, tpl, count=1)
         enc = json.dumps(tpl, ensure_ascii=False).replace("</", "<\\/")
         page = page[: m.start(2)] + enc + page[m.end(2):]
