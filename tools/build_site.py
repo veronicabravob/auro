@@ -102,5 +102,23 @@ def main(src, out):
             open(os.path.join(out, n), "w", encoding="utf-8").write(page)
             print("ok", n, len(page))
 
+# Entregables publicados junto al prototipo: <site>/entregables/<nombre>
+DELIVERABLES = {
+    "resumen-ejecutivo-auro.pdf": "entregables/resumen-ejecutivo/resumen-ejecutivo-auro.pdf",
+    "modelo-financiero-auro.xlsx": "entregables/modelo-financiero/modelo-financiero-auro.xlsx",
+    "arquitectura-auro.html": "entregables/arquitectura/arquitectura-auro.html",
+    "declaracion-uso-ia-auro.pdf": "entregables/declaracion-uso-ia/declaracion-uso-ia-auro.pdf",
+}
+
+def copy_deliverables(out):
+    import shutil
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    dest = os.path.join(out, "entregables")
+    os.makedirs(dest, exist_ok=True)
+    for name, src in DELIVERABLES.items():
+        shutil.copyfile(os.path.join(root, src), os.path.join(dest, name))
+        print("ok entregables/" + name)
+
 if __name__ == "__main__":
     main(sys.argv[1], sys.argv[2])
+    copy_deliverables(sys.argv[2])
