@@ -85,6 +85,9 @@ p("usura_nov26", "Tasa de usura consumo y ordinario, nov-2026", "% E.A.", "pct2"
 p("usura_oct26", "Tasa de usura consumo y ordinario, oct-2026", "% E.A.", "pct2", 0.2859, 0.2859, 0.2859, V, "F07", "Res. SFC 1472 de 2026. El prototipo cita rotativos hasta 28,9 % en octubre: por encima de este techo.", "")
 
 sec("2. Embudo (funnel)")
+p("mes_ini_tes", "Calendario · mes de inicio de la tesorería (piloto, semana 4-6)", "mes", "int", 1, 1, 1, S, "F20", "Roadmap acelerado: mes 1 = enero 2027.", "")
+p("mes_ini_cupo", "Calendario · mes de inicio del preaprobado y la activación del cupo", "mes", "int", 2, 2, 2, S, "F20", "Roadmap acelerado (antes mes 3).", "")
+p("mes_ini_uso", "Calendario · mes de inicio del uso del cupo y el abono con mandato", "mes", "int", 3, 3, 3, S, "F20", "Roadmap acelerado (antes mes 5). Los meses 4-6 del piloto miden cohortes.", "")
 p("reg_p1", "Registros nuevos por mes · piloto cerrado (meses 1-6)", "empresas/mes", "int", 40, 70, 90, S, "F20", "Piloto con gremio manufacturero y un software contable aliado.", "")
 p("reg_p2", "Registros nuevos por mes · apertura (meses 7-12)", "empresas/mes", "int", 150, 300, 350, S, "", "", "")
 p("reg_y2", "Registros nuevos por mes · 2028", "empresas/mes", "int", 300, 600, 700, S, "", "Incluye ampliación a otros sectores B2B que venden a plazo.", "")
@@ -127,8 +130,8 @@ p("plazo_inv", "Plazo del crédito de inversión", "meses", "int", 36, 36, 36, S
 p("tasa_inv", "Tasa del crédito de inversión", "% E.A.", "pct2", 0.155, 0.155, 0.155, S, "", "", "")
 p("com_estr", "Comisión de estructuración del crédito de inversión", "% del monto", "pct", 0.01, 0.01, 0.01, S, "", "", "")
 
-sec("6. Inversión inicial (año 0, nov-2026 a dic-2026, y primeros desarrollos)")
-p("inv_desarrollo", "Desarrollo de producto, agentes y app", "COP M", "copm", 2600, 2200, 1900, S, "", "Equipo de 10 personas × 6 meses + licencias.", "")
+sec("6. Inversión inicial (año 0: construcción de ~3 meses antes del piloto)")
+p("inv_desarrollo", "Desarrollo de producto, agentes y app", "COP M", "copm", 1400, 1100, 950, S, "", "Equipo de ~10 personas × 3 meses con desarrollo asistido por IA (antes 6 meses: 2.600/2.200/1.900) + licencias. El resto de partidas no depende de la duración de la construcción.", "")
 p("inv_integraciones", "Integraciones (software contable, DIAN/RADIAN, RUES, centrales, biometría, core de crédito)", "COP M", "copm", 1000, 800, 650, S, "", "", "")
 p("inv_compliance", "Cumplimiento, legal y riesgo (SARLAFT, datos personales, modelo de riesgo, políticas)", "COP M", "copm", 600, 450, 400, S, "", "", "")
 p("inv_seguridad", "Seguridad, red teaming y evals de agentes", "COP M", "copm", 400, 300, 250, S, "", "", "")
@@ -224,18 +227,18 @@ def it(key, label, unit, fmt, agg, tmpl, sheet, first=None, bold=False):
 
 
 F, I, C, PG = "Funnel", "Ingresos_Margen", "Costos", "PyG_Flujo"
-it("reg_nuevos", "Registros nuevos en tesorería", "empresas", "int", "sum", "{R:reg}", F)
+it("reg_nuevos", "Registros nuevos en tesorería", "empresas", "int", "sum", "IF({M}>={P:mes_ini_tes},{R:reg},0)", F)
 it("reg_acum", "Registros acumulados", "empresas", "int", "end", "{p:reg_acum}+{c:reg_nuevos}", F)
 it("activ_nuevos", "Nuevos usuarios activos (conectan facturas)", "empresas", "int", "sum", "{c:reg_nuevos}*{P:pct_activacion}", F)
 it("activos_tes", "Usuarios activos de tesorería (stock)", "empresas", "int", "end", "{p:activos_tes}*(1-{P:churn})+{c:activ_nuevos}", F, bold=True)
-it("preaprob_nuevos", "Nuevos preaprobados", "empresas", "int", "sum", "{c:activ_nuevos}*{P:pct_preaprob}", F)
-it("solicitudes", "Solicitudes de activación del cupo", "solicitudes", "int", "sum", "{l1:preaprob_nuevos}*{P:conv_inicial}+{p:stock_pre}*{P:conv_tardia}", F)
+it("preaprob_nuevos", "Nuevos preaprobados (los anteriores al inicio del cupo quedan en el stock)", "empresas", "int", "sum", "{c:activ_nuevos}*{P:pct_preaprob}", F)
+it("solicitudes", "Solicitudes de activación del cupo", "solicitudes", "int", "sum", "IF({M}>={P:mes_ini_cupo},{l1:preaprob_nuevos}*{P:conv_inicial}+{p:stock_pre}*{P:conv_tardia},0)", F)
 it("stock_pre", "Preaprobados pendientes de solicitar (stock)", "empresas", "int", "end", "{p:stock_pre}*(1-{P:churn})+{c:preaprob_nuevos}-{c:solicitudes}", F)
 it("cupos_nuevos", "Cupos activados en el mes", "cupos", "int", "sum", "{c:solicitudes}*{P:aprob_valid}", F)
 it("cupos_activos", "Cupos activos (stock)", "cupos", "int", "end", "{p:cupos_activos}*(1-{P:attr_cupos})+{c:cupos_nuevos}", F, bold=True)
 it("n1", "Usuarios solo tesorería (Nivel 1)", "empresas", "int", "end", "MAX(0,{c:activos_tes}-{c:cupos_activos})", F)
 it("cupo_total", "Cupo aprobado total", "COP M", "copm", "end", "{c:cupos_activos}*{P:cupo_prom}", F)
-it("cartera_cupo", "Saldo utilizado del cupo (cartera rotativa)", "COP M", "copm", "end", "{c:cupo_total}*{P:utilizacion}", F, bold=True)
+it("cartera_cupo", "Saldo utilizado del cupo (cartera rotativa)", "COP M", "copm", "end", "IF({M}>={P:mes_ini_uso},{c:cupo_total}*{P:utilizacion},0)", F, bold=True)
 it("grad_nuevos", "Nuevos créditos de inversión (Nivel 3)", "créditos", "num1", "sum", "{l6:cupos_activos}*{P:tasa_grad}", F)
 it("saldo_inv", "Saldo de créditos de inversión", "COP M", "copm", "end", "{p:saldo_inv}*(1-1/{P:plazo_inv})+{c:grad_nuevos}*{P:monto_inv}", F)
 it("cartera_total", "Cartera total (cupo + inversión)", "COP M", "copm", "end", "{c:cartera_cupo}+{c:saldo_inv}", F, bold=True)
@@ -1209,7 +1212,7 @@ VAL = [
     ("Conversión de preaprobado a cupo", f'=TEXT({S_("conv_inicial")},"0%")&" al mes + "&TEXT({S_("conv_tardia")},"0.0%")&"/mes"',
      "A/B: alerta de hueco con oferta de cupo vs. sin oferta; guion de activación de 10 minutos", "% de preaprobados que activan en 60 días", "≥ 25 %", "Meses 2-6", "Revisar momento de la oferta y fricción documental"),
     ("Pérdida esperada (PD de pequeñas empresas evaluadas con facturas)", f'=TEXT({S_("pd")},"0.0%")&" PD; LGD "&TEXT({S_("lgd")},"0%")',
-     "Backtesting del modelo con facturas + centrales sobre cartera histórica de intermediarios; seguimiento de mora 30+ de las cohortes del piloto", "Mora 30+ a 6 meses; PD estimada vs. observada", "Mora 30+ ≤ 3 % a 6 meses", "Meses 1-2 (backtesting) y 6-12", "Ajustar cupo, política o exigir más garantía"),
+     "Backtesting del modelo con facturas + centrales sobre cartera histórica de intermediarios; seguimiento de los primeros usos del cupo (desde el mes 3)", "Mora 30+ observada en el piloto; % de primeros usos pagados a tiempo; PD estimada vs. observada", "Mora 30+ observada ≤ 3 % y ≥ 95 % de los primeros usos pagados a tiempo", "Meses 1-2 (backtesting) y 3-6 (indicador temprano). La mora 30+ a 6 meses queda como seguimiento posterior a escalar (meses 8-12)", "Ajustar cupo, política o exigir más garantía"),
     ("Activación de datos: la pyme conecta 12 meses de facturas", f'=TEXT({S_("pct_activacion")},"0%")',
      "Piloto cerrado con gremio manufacturero y un software contable aliado; medir por canal de conexión", "% de registros con 12 meses completos en 7 días", "≥ 50 %", "Meses 1-3", "Priorizar conectores o asistencia humana en onboarding"),
     ("CAC por registro", f'=TEXT({S_("cac")},"#,##0")&" COP"',
