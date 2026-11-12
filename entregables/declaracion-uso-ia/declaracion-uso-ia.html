@@ -1,0 +1,136 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<title>Auro by BFE · Declaración de uso de IA</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 14mm 15mm 13mm; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: 'Outfit', system-ui, sans-serif; color: #1B1533; font-size: 9.6pt; line-height: 1.45; margin: 0; }
+.page { break-after: page; } .page:last-child { break-after: auto; }
+.top { display: flex; align-items: center; gap: 8px; border-bottom: 2px solid #6A48F5; padding-bottom: 5px; margin-bottom: 8px; color: #4B4470; font-size: 8pt; }
+.top b { color: #1B1533; font-size: 10pt; }
+h1 { font-size: 17pt; letter-spacing: -0.02em; margin: 4px 0 6px; }
+h2 { font-size: 11pt; color: #4B2FD6; margin: 12px 0 4px; break-after: avoid; }
+p { margin: 0 0 6px; } ul, ol { margin: 2px 0 6px; padding-left: 16px; } li { margin: 2px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 9pt; margin: 4px 0 8px; }
+th { text-align: left; color: #4B4470; border-bottom: 1px solid #E1DAF7; padding: 4px 6px; }
+td { border-bottom: 1px solid #EEEAFB; padding: 4px 6px; vertical-align: top; }
+td:first-child { width: 28%; }
+h1 + p { background: #F7F5FF; border-left: 4px solid #FFC83D; padding: 6px 10px; border-radius: 0 8px 8px 0; }
+</style></head><body>
+<section class="page"><div class="top"><svg width="30" height="30" viewBox="0 0 48 48" aria-hidden="true"><circle cx="22" cy="27" r="15" fill="none" stroke="#6A48F5" stroke-width="9"/><circle cx="33" cy="16" r="7.5" fill="#FFC83D"/></svg><div><b>Auro by BFE</b> · Declaración de uso de IA</div></div><h1>Declaración de uso de IA</h1>
+<p><strong>Propuesta:</strong> Auro by BFE · Prueba técnica AI Product Engineer · Banca Pyme</p>
+<h2>Herramientas y uso</h2>
+<table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Para qué la usé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Claude Design</strong> (Anthropic)</td>
+<td>Investigación de mercado y referentes; opciones de segmento, producto, nombre, personalidad, paleta, logo y tipografía; redacción de textos; construcción de las 18 pantallas del prototipo.</td>
+</tr>
+<tr>
+<td><strong>Claude Code</strong> con Claude Opus 5.5 (Anthropic)</td>
+<td>Revisión del prototipo contra la rúbrica; conversión del export a un sitio navegable y responsive; pruebas automáticas de enlaces y caminos de excepción; despliegue en Render. También coordiné con esta herramienta dos agentes: uno para la arquitectura agéntica y otro para el modelo financiero.</td>
+</tr>
+<tr>
+<td><strong>Búsqueda web</strong> (desde Claude)</td>
+<td>Datos de mercado y normativa colombiana. Cada cifra o norma se cita con su fuente en el modelo financiero y en la arquitectura.</td>
+</tr>
+</tbody>
+</table>
+<h2>Qué decidí yo y qué hizo la IA</h2>
+<p><strong>Decidí yo:</strong></p>
+<ul>
+<li>El problema y el segmento: el segmento lo propuso la IA y lo acepté después de cuestionarlo.</li>
+<li>El producto: tesorero gratuito con cupo de fomento.</li>
+<li>Las restricciones: 100 % digital, software propio y sin competir con el software contable.</li>
+<li>La marca y el flujo de la experiencia.</li>
+<li>Los límites del agente: no aprueba créditos, no fija montos ni tasas, no mueve dinero sin aprobación, y pasa el caso a una persona ante anomalías.</li>
+</ul>
+<p><strong>Hizo la IA:</strong> investigó, propuso alternativas, redactó, diseñó y construyó, siempre bajo mi revisión.</p>
+<p>El detalle está en el anexo <em>Proceso de diseño con IA</em>.</p>
+<h2>Cómo verifiqué el trabajo de la IA</h2>
+<ul>
+<li><strong>Prototipo:</strong><ul>
+<li>Prueba automática de los 180 enlaces de las 18 pantallas.</li>
+<li>Recorrido de los tres caminos de excepción.</li>
+<li>Revisión a 390, 768 y 1440 px de ancho.</li>
+</ul>
+</li>
+<li><strong>Cifras y normas:</strong> cada una lleva su fuente y se marca como verificada o como supuesto. Las inconsistencias detectadas se corrigieron o quedaron declaradas.</li>
+<li><strong>Supuestos críticos:</strong> no se presentan como certezas. Tienen un plan de validación en el modelo financiero.</li>
+</ul>
+<h2>Límites conocidos</h2>
+<ul>
+<li>Los datos del prototipo son de ejemplo y las conexiones son simuladas.</li>
+<li>Los precios de los modelos de IA y algunas normas (mecanismo de consentimiento de finanzas abiertas, acceso a RADIAN) deben confirmarse con el banco y sus proveedores antes del piloto.</li>
+</ul></section>
+<section class="page"><div class="top"><svg width="30" height="30" viewBox="0 0 48 48" aria-hidden="true"><circle cx="22" cy="27" r="15" fill="none" stroke="#6A48F5" stroke-width="9"/><circle cx="33" cy="16" r="7.5" fill="#FFC83D"/></svg><div><b>Auro by BFE</b> · Anexo · Proceso de diseño con IA</div></div><h1>Auro by BFE · Proceso de diseño con IA</h1>
+<p>Cómo se construyó la propuesta, qué decidí yo y qué hizo la IA. El proceso siguió un doble diamante: primero abrir y cerrar el problema, después abrir y cerrar la solución.</p>
+<h2>1. Descubrir: abrir el problema</h2>
+<p>Antes de proponer nada pedí investigar con método: tamaño de mercado (TAM, SAM, SOM), referentes del mundo y competidores en Colombia. Mis decisiones en esta fase fueron sobre todo descartes y preguntas:</p>
+<ul>
+<li><strong>Descarté el descuento de facturas</strong> como producto de entrada.</li>
+<li><strong>Pregunté cómo llega un banco de segundo piso a una pyme que no conoce.</strong> Esa pregunta reorientó la búsqueda.</li>
+<li><strong>Pedí revisar las microempresas</strong> y las brechas que solo un banco de fomento puede cubrir.</li>
+</ul>
+<h2>2. Definir: cerrar en una apuesta</h2>
+<ul>
+<li><strong>Idea central (mía):</strong> llegar a la pyme resolviéndole un problema de plata y ofrecer el crédito dentro de esa solución.</li>
+<li><strong>Producto:</strong> un tesorero digital gratuito con un cupo rotativo de fomento. Madura a la empresa y le presta en el proceso.</li>
+<li><strong>Restricciones:</strong> 100 % digital, software propio del banco y sin competir con el software contable.</li>
+<li><strong>Segmento:</strong> pequeñas empresas que venden a plazo a otras empresas. Lo propuso la IA; lo acepté después de cuestionarlo.</li>
+</ul>
+<h2>3. Desarrollar: marca</h2>
+<p>Abrí varias rondas de opciones y cerré cada una con un criterio explícito:</p>
+<ul>
+<li><strong>Nombre:</strong> descarté los que llevaban "IA" y pedí uno corto, moderno y con personalidad. Elegí <strong>Auro</strong>, con "by BFE" para anclarlo al banco.</li>
+<li><strong>Personalidad:</strong> un asistente que trata de "tú", neutro en género, previsor, claro y franco. Siempre dice que es una IA y nunca presiona ni promete aprobaciones.</li>
+<li><strong>Color:</strong> rechacé dos paletas por opacas y elegí lila y oro, "con más luz".</li>
+<li><strong>Logo:</strong> propuse que el icono fuera parte de una letra. Quedó la "o" con un punto dorado en órbita, que funciona sola como icono y como avatar de Auro.</li>
+<li><strong>Tipografía:</strong> Outfit en todo el producto, a propuesta de la IA.</li>
+</ul>
+<h2>4. Entregar: producto</h2>
+<p>Iteré pantalla por pantalla, con criterio de usuaria:</p>
+<ul>
+<li><strong>Flujo (dictado por mí):</strong> registro con NIT → confirmar o corregir datos → contraseña → carga de información → alertas gratis → preaprobado → activación → uso → plan del mes.</li>
+<li><strong>Estructura:</strong> menú lateral fijo, fondo blanco e Inicio reorganizado, con el cupo preaprobado junto a la gráfica de caja.</li>
+<li><strong>Proceso o conversación:</strong> rechacé las primeras versiones porque no se entendía cuál de las dos era. Definí que el agente vive en "Hablar con Auro", a pantalla completa y con historial, y que cada acción abre ahí una conversación con el mensaje ya escrito.</li>
+<li><strong>Realismo del agente:</strong> mis preguntas sobre la DIAN llevaron a quitar estados que Auro no podría conocer.</li>
+<li><strong>Responsabilidad:</strong><ul>
+<li>La aprobación la hace la política del banco desde el primer día.</li>
+<li>Las anomalías, Auro ayuda a corregirlas o pasa el caso a una persona.</li>
+<li>Auro redacta, pero no envía mensajes ni mueve plata.</li>
+</ul>
+</li>
+<li><strong>Para quien evalúa:</strong> todos los botones tienen acción y los tres casos de excepción están a un clic desde el menú.</li>
+</ul>
+<h2>5. Validar y entregar el paquete</h2>
+<ul>
+<li><strong>Revisión estricta contra la rúbrica.</strong> La primera exportación no cumplía por dos razones: traía una sola pantalla y no era responsive. La segunda traía las 18 pantallas, pero los enlaces entre ellas no funcionaban.</li>
+<li><strong>Prototipo navegable y responsive:</strong><ul>
+<li>Convertí la exportación en un sitio estático con una página por pantalla y una capa responsive (menú superior en celular).</li>
+<li>Lo probé de forma automática: 180 enlaces sin fallas y los tres caminos de excepción recorridos de punta a punta.</li>
+<li>Lo publiqué en Render.</li>
+</ul>
+</li>
+<li><strong>Arquitectura agéntica:</strong><ul>
+<li>Documenté los agentes, sus permisos, la memoria, los traspasos a personas, los controles, los evals y las integraciones.</li>
+<li>Mantuve la regla central del prototipo: la IA informa y propone; el crédito y el cumplimiento los deciden la política del banco y las personas.</li>
+</ul>
+</li>
+<li><strong>Modelo financiero y resumen ejecutivo:</strong><ul>
+<li>Están construidos sobre datos de mercado con fuente citada.</li>
+<li>Separan lo verificado de lo supuesto e incluyen un plan para validar las hipótesis críticas.</li>
+</ul>
+</li>
+</ul>
+<h2>Reparto del trabajo</h2>
+<p><strong>Yo decidí</strong> el problema, el producto, las restricciones, la marca, la experiencia y los límites de autonomía del agente.</p>
+<p><strong>La IA</strong> investigó, propuso opciones, redactó textos, construyó las pantallas y los documentos, y automatizó las pruebas. Revisé cada entregable antes de incluirlo.</p>
+<p>Varias cifras siguen siendo supuestos sin validar con el banco. Están marcadas como tales en el modelo financiero y en la arquitectura.</p></section>
+</body></html>

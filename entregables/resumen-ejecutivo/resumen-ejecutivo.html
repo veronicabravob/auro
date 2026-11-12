@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Auro by BFE · Resumen ejecutivo</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 11mm 12mm 10mm; }
+  :root { --ink:#1B1533; --mut:#4B4470; --pur:#6A48F5; --pur2:#4B2FD6; --lil:#F7F5FF; --lil2:#F1ECFF; --line:#E1DAF7; --gold:#FFC83D; --red:#8F1D12; --grn:#0B5E47; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; font-family: 'Outfit', system-ui, sans-serif; color: var(--ink); font-size: 8.6pt; line-height: 1.36; background: #fff; }
+  .page { break-after: page; }
+  .page:last-child { break-after: auto; }
+  header { display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--pur); padding-bottom: 5px; margin-bottom: 7px; }
+  header .brand { display: flex; align-items: center; gap: 8px; }
+  header h1 { font-size: 15pt; margin: 0; letter-spacing: -0.02em; }
+  header .sub { color: var(--mut); font-size: 8pt; }
+  header .meta { text-align: right; color: var(--mut); font-size: 7.6pt; white-space: nowrap; }
+  h2 { font-size: 10pt; margin: 8px 0 3px; color: var(--pur2); letter-spacing: -0.01em; }
+  h2 .n { display: inline-block; background: var(--pur); color: #fff; border-radius: 99px; font-size: 7pt; padding: 0 6px; margin-right: 5px; vertical-align: 1px; }
+  p { margin: 0 0 4px; }
+  ul { margin: 2px 0 4px; padding-left: 13px; }
+  li { margin: 1px 0; }
+  .ask { background: var(--pur); color: #fff; border-radius: 10px; padding: 7px 11px; display: grid; grid-template-columns: 1.25fr 1fr; gap: 10px; }
+  .ask b.k { color: var(--gold); font-size: 7.4pt; text-transform: uppercase; letter-spacing: .08em; display: block; }
+  .ask .big { font-size: 10.4pt; font-weight: 600; line-height: 1.25; }
+  .ask ul { padding-left: 12px; margin: 2px 0 0; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .box { background: var(--lil); border-radius: 8px; padding: 6px 9px; }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 4px 0; }
+  .kpi { border: 1px solid var(--line); border-radius: 8px; padding: 4px 7px; }
+  .kpi b { display: block; font-size: 11pt; }
+  .kpi span { color: var(--mut); font-size: 7.2pt; line-height: 1.2; display: block; }
+  table { width: 100%; border-collapse: collapse; font-size: 7.7pt; }
+  th { text-align: left; color: var(--mut); font-weight: 600; border-bottom: 1px solid var(--line); padding: 2px 4px; }
+  td { border-bottom: 1px solid #EEEAFB; padding: 2px 4px; vertical-align: top; }
+  td.r, th.r { text-align: right; white-space: nowrap; }
+  tr.hl td { background: var(--lil2); font-weight: 600; }
+  .neg { color: var(--red); }
+  .pos { color: var(--grn); }
+  .tag { display: inline-block; font-size: 6.6pt; font-weight: 600; border-radius: 99px; padding: 0 5px; background: var(--lil2); color: var(--pur2); white-space: nowrap; }
+  .tag.h { background: #FFF3D1; color: #6B4A00; }
+  .note { color: var(--mut); font-size: 7pt; }
+  .gates { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+  .gate { border: 1px solid var(--line); border-top: 3px solid var(--pur); border-radius: 6px; padding: 4px 6px; font-size: 7.4pt; line-height: 1.28; }
+  .gate b { display: block; font-size: 7.8pt; }
+  .gate .g { color: var(--pur2); font-weight: 600; display: block; margin-top: 2px; }
+  footer { margin-top: 6px; border-top: 1px solid var(--line); padding-top: 4px; color: var(--mut); font-size: 7pt; display: flex; justify-content: space-between; gap: 10px; }
+  a { color: var(--pur2); }
+  @media screen { body { background: #EEE; } .page { background: #fff; width: 210mm; min-height: 297mm; margin: 12px auto; padding: 11mm 12mm 10mm; box-shadow: 0 1px 4px rgba(0,0,0,.15); } }
+</style>
+</head>
+<body>
+
+<!-- ============================ PÁGINA 1 ============================ -->
+<section class="page">
+<header>
+  <div class="brand">
+    <svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><circle cx="22" cy="27" r="15" fill="none" stroke="#6A48F5" stroke-width="9"/><circle cx="33" cy="16" r="7.5" fill="#FFC83D"/></svg>
+    <div><h1>Auro by BFE · Resumen ejecutivo</h1>
+    <div class="sub">Un tesorero digital con IA, gratuito, que lleva el crédito de fomento a la pyme justo cuando lo necesita</div></div>
+  </div>
+  <div class="meta">Propuesta para el comité · 12 nov 2026<br>Prueba técnica AI Product Engineer · Banca Pyme<br>Caso ficticio con datos de mercado reales</div>
+</header>
+
+<div class="ask">
+  <div>
+    <b class="k">Decisión solicitada</b>
+    <div class="big">Aprobar un piloto de 6 meses con compuertas, no la escala.</div>
+    <p style="margin:3px 0 0">El caso base no se paga en 3 años. Es una curva J de crédito: la inversión y el equipo llegan antes que la cartera. Por eso pedimos aprobar solo el aprendizaje, acotado, y escalar únicamente si el piloto demuestra los tres supuestos que deciden el caso.</p>
+  </div>
+  <div>
+    <b class="k">Condiciones para escalar (compuerta G3)</b>
+    <ul>
+      <li>Spread de al menos 4 p.p. sobre el fondeo, con compensación de tasa de fomento o con la tasa indexada al IBR.</li>
+      <li>Utilización del cupo de al menos 30 % a 90 días.</li>
+      <li>Conversión de preaprobado a cupo de al menos 25 % en 60 días, con mora 30+ de máximo 3 % a 6 meses.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="cols">
+<div>
+  <h2><span class="n">1</span>Problema y segmento</h2>
+  <p><b>Problema prioritario:</b> la pyme que vende a plazo es rentable, pero se queda sin caja porque sus clientes le pagan a 60-75 días y ella paga nómina e impuestos en fechas fijas. Se entera tarde, cuando ya no tiene opciones baratas. El 60 % de las pymes no ha accedido a crédito formal <span class="note">(Anif)</span>.</p>
+  <p><b>Reto del banco:</b> un banco de segundo piso no conoce a la pyme ni tiene cómo llegarle. Nuestra respuesta es <b>llegar resolviéndole un problema de plata y ofrecer el crédito dentro de esa solución</b>.</p>
+  <div class="kpis">
+    <div class="kpi"><b>133 mil</b><span>pymes en Colombia (Confecámaras 2023)</span></div>
+    <div class="kpi"><b>~76 mil</b><span>SAM: venden a plazo y facturan electrónicamente</span></div>
+    <div class="kpi"><b>~7,9 mil</b><span>entrada: pequeñas manufactureras a plazo</span></div>
+    <div class="kpi"><b>18,9 %</b><span>IBC comercial ordinario, nov 2026 (usura 28,3 %)</span></div>
+  </div>
+  <p class="note">Los porcentajes de venta a plazo y de manufactura son supuestos marcados para validar con RUES y RADIAN.</p>
+
+  <h2><span class="n">2</span>Producto y propuesta de valor</h2>
+  <ul>
+    <li><b>Tesorería gratuita (adquisición y datos):</b> Auro se conecta en solo lectura al software contable y a las facturas electrónicas, proyecta la caja 13 semanas, avisa del faltante con semanas de anticipación ("faltan $12 M para la nómina del 30") y propone acciones: cobro, pronto pago y plazo con el proveedor.</li>
+    <li><b>Cupo rotativo de fomento preaprobado</b>, ofrecido solo si las acciones no alcanzan. Hasta $60 M, 14,9 % E.A., hasta 6 meses por uso y garantía pública del 50 %. Con la comisión del FNG, el costo total es cerca de 18,5 % E.A. Solo puede usarse para pagar proveedores con factura o la nómina registrada.</li>
+    <li><b>Para la pyme:</b> ve su caja antes del problema, recibe crédito barato sin ir a una oficina y lo activa en unos 10 minutos. <b>Para el BFE:</b> relación directa, datos reales de comportamiento y una originación más barata.</li>
+  </ul>
+
+  <h2><span class="n">3</span>Priorización</h2>
+  <p><b>Primero:</b> tesorería, alertas y acciones, luego preaprobado, activación con 7 controles, uso y abono del cupo. <b>Después:</b> factoring y descuento de facturas (descartados como entrada), microempresas, otras industrias desde 2028, integración con más software contable y finanzas abiertas en lugar de extractos en PDF. <b>No construimos</b> un software contable: no competimos con él.</p>
+  <div class="box" style="margin-top:6px"><b>Integración:</b> núcleo bancario, originación, motor de decisión, sistema de pagos (idempotente), CRM y cola de casos, a través de un gateway de herramientas con permisos por agente. Fuentes: Siigo y buzón de facturas (solo lectura), DIAN, RADIAN, RUES, listas restrictivas y centrales de riesgo. Modelos: Claude Sonnet 5.5 por defecto, Haiku 5.5 para extraer y clasificar, Opus 5.5 para investigar anomalías y para el copiloto.</div>
+</div>
+
+<div>
+  <h2><span class="n">4</span>Solución agéntica: autonomía, límites y controles</h2>
+  <p><b>Regla central:</b> el modelo de lenguaje <b>informa y propone</b>. Monto, tasa, activación y los 7 controles los decide un <b>motor determinístico aprobado por el comité de riesgo</b>, junto con personas. Ningún agente tiene una herramienta que apruebe, niegue o fije condiciones.</p>
+  <table>
+    <tr><th>Agente</th><th>Qué hace</th><th>Autonomía</th></tr>
+    <tr><td>A0 Orquestador</td><td>Entiende la intención, delega y responde con "Consulté: …"</td><td><span class="tag">informa</span></td></tr>
+    <tr><td>A1 Vinculación y SARLAFT</td><td>Identidad, RUES, RUT, listas y centrales, con evidencia</td><td><span class="tag">ejecuta lecturas</span></td></tr>
+    <tr><td>A2 Datos y caja</td><td>Lee facturas y extractos; la proyección la calcula código</td><td><span class="tag">informa</span></td></tr>
+    <tr><td>A3 Validación y anomalías</td><td>Concilia lo facturado con los extractos y RADIAN; detiene la activación y pide documentos</td><td><span class="tag">recomienda</span> <span class="tag h">handoff</span></td></tr>
+    <tr><td>A4 Uso del cupo y pagos</td><td>Prepara usos y abonos hacia destinos permitidos; los ejecuta Pagos con mandato y OTP</td><td><span class="tag">propone</span></td></tr>
+    <tr><td>A5 Acompañamiento</td><td>Plan del mes, cobro, pronto pago y plazo</td><td><span class="tag">recomienda</span></td></tr>
+    <tr><td>A6 Redactor</td><td>Redacta borradores; no tiene herramienta para enviar</td><td><span class="tag">propone</span></td></tr>
+    <tr><td>A7 Copiloto de analista</td><td>Arma el caso para la analista humana</td><td><span class="tag">informa</span></td></tr>
+  </table>
+  <ul style="margin-top:4px">
+    <li><b>Personas responsables:</b> una analista de crédito ve el caso ante una anomalía (SLA de 1 día hábil), si el cupo pasa de $100 M, en una muestra mensual o cuando el cliente lo pide. El oficial de cumplimiento revisa las coincidencias en listas.</li>
+    <li><b>Mensajes manipuladores:</b> instrucciones y datos van separados y los documentos se leen en cuarentena. Los roles se verifican en los sistemas, nunca en el chat. Las herramientas están en una lista cerrada y no existe ninguna que transfiera a cuentas no registradas.</li>
+    <li><b>Privacidad y consentimiento:</b> Ley 1581 y habeas data financiero. Las fuentes son revocables y "Borrar todo" funciona. El modelo es compatible con finanzas abiertas (Decretos 1297 de 2022 y 368 de 2026).</li>
+    <li><b>Explicabilidad y trazabilidad:</b> el "Consulté: …" sale del registro real de herramientas, y "Por qué Auro se detuvo" sale de los códigos de razón del motor. Todo queda en una bitácora inmutable.</li>
+    <li><b>Evals:</b> casos de referencia por agente y red teaming con puerta dura: 0 escrituras no autorizadas y al menos 99,5 % de rechazo correcto ante instrucciones maliciosas.</li>
+  </ul>
+</div>
+</div>
+</section>
+
+<!-- ============================ PÁGINA 2 ============================ -->
+<section class="page">
+<header>
+  <div class="brand">
+    <svg width="26" height="26" viewBox="0 0 48 48" aria-hidden="true"><circle cx="22" cy="27" r="15" fill="none" stroke="#6A48F5" stroke-width="9"/><circle cx="33" cy="16" r="7.5" fill="#FFC83D"/></svg>
+    <h1 style="font-size:12pt">Valor, inversión, riesgos y plan del piloto</h1>
+  </div>
+  <div class="meta">Cifras en millones de COP (COP M) · TRM 3.250 · Mes 1 = enero 2027</div>
+</header>
+
+<div class="cols">
+<div>
+  <h2><span class="n">5</span>Valor esperado e inversión (modelo a 3 años)</h2>
+  <table>
+    <tr><th>Indicador</th><th class="r">Pesimista</th><th class="r">Base</th><th class="r">Optimista</th></tr>
+    <tr><td>Inversión inicial</td><td class="r">5.000</td><td class="r">4.050</td><td class="r">3.450</td></tr>
+    <tr><td>Cupos activos, dic 2029</td><td class="r">452</td><td class="r">2.320</td><td class="r">4.268</td></tr>
+    <tr><td>Cartera, dic 2029</td><td class="r">9.000</td><td class="r">76.470</td><td class="r">188.607</td></tr>
+    <tr><td>Ingresos netos 2027 / 28 / 29</td><td class="r">3 / 37 / 154</td><td class="r">125 / 1.365 / 4.388</td><td class="r">306 / 3.514 / 11.804</td></tr>
+    <tr><td>Costo de IA, 3 años (% de la operación)</td><td class="r">245 (1,6 %)</td><td class="r">406 (2,9 %)</td><td class="r">463 (3,6 %)</td></tr>
+    <tr class="hl"><td>Utilidad neta acumulada, 3 años</td><td class="r neg">−13.218</td><td class="r neg">−8.596</td><td class="r neg">−1.354</td></tr>
+    <tr><td>Utilidad neta 2030 / 2031 (extensión)</td><td class="r neg">−4.098 / −4.203</td><td class="r pos">+255 / +2.114</td><td class="r pos">+10.029 / +17.403</td></tr>
+    <tr class="hl"><td>VPN a 5 años con valor terminal</td><td class="r neg">−32.360</td><td class="r neg">−5.721</td><td class="r pos">+96.559</td></tr>
+    <tr><td>Payback operativo</td><td class="r">&gt; 60 meses</td><td class="r">&gt; 60 meses</td><td class="r">mes 39</td></tr>
+  </table>
+  <p class="note" style="margin-top:2px">El VPN a 3 años sin valor terminal es negativo en los tres escenarios (base −11.611). El punto de equilibrio está en unos 3.000 cupos activos, y el ROE en 2031 es cerca de 19 % en la base. Supuestos de la base: tasa del Banco de la República de 12 % → 9 %, fondeo igual a esa tasa + 0,75 p.p., compensación de fomento de +2,6 p.p. Sin esa compensación, el VPN a 5 años baja a ≈ −18.200.</p>
+
+  <h2><span class="n">6</span>Qué aporta la IA</h2>
+  <ul>
+    <li><b>Eficiencia:</b> ahorra ≈ 1.046 M netos en originación y soporte en 3 años. El costo por cupo originado baja de 0,64 a 0,40 M. Con el copiloto, cada analista atiende 60 casos al mes en vez de 25.</li>
+    <li><b>Conversión y experiencia:</b> aporta ≈ 651 M de margen por mayor conversión, y la respuesta pasa de 10 días hábiles a menos de 1.</li>
+    <li><b>Costo bajo:</b> cerca de US$1,3 al mes por cliente con cupo (US$0,8 por cliente solo con tesorería). En 2028-2029 la IA devuelve unas 4,5 veces su costo. Un ±20 % en ese costo mueve el VPN apenas ±426 M.</li>
+  </ul>
+
+  <h2><span class="n">7</span>Sensibilidad: qué decide el caso</h2>
+  <table>
+    <tr><th>Supuesto (choque de ±20 %)</th><th class="r">Rango de VPN</th><th>Cómo se valida</th></tr>
+    <tr><td>Tasa y spread sobre el fondeo</td><td class="r">25.493</td><td>Decisión de tesorería y MinCIT; prueba de precio</td></tr>
+    <tr><td>Utilización del cupo (45 %)</td><td class="r">11.294</td><td>Saldo/cupo a 90 días por cohorte; ≥ 30 %</td></tr>
+    <tr><td>Conversión de preaprobado a cupo (45 %)</td><td class="r">8.631</td><td>A/B de la alerta con oferta; ≥ 25 % en 60 días</td></tr>
+    <tr><td>Pérdida esperada (PD 4,5 %, LGD 55 %)</td><td class="r">4.203</td><td>Backtesting con facturas; mora 30+ ≤ 3 %</td></tr>
+    <tr><td>CAC por registro (COP 150.000)</td><td class="r">2.809</td><td>3 canales: gremio, contadores, software</td></tr>
+  </table>
+</div>
+
+<div>
+  <h2><span class="n">8</span>Plan de 6 meses con compuertas</h2>
+  <div class="gates">
+    <div class="gate"><b>Mes 0 · Habilitar</b>Tasa y compensación definidas; acuerdos con Siigo y RADIAN; procedimiento SARLAFT con IA; comité de IA constituido.<span class="g">G0: decisiones firmadas</span></div>
+    <div class="gate"><b>Meses 1-2 · Tesorería</b>Piloto cerrado con un gremio manufacturero y un software aliado (≈ 70 registros al mes). Agentes A0, A2, A5 y A6.<span class="g">G1: precisión de extracción ≥ 98 %; ≥ 40 % activos</span></div>
+    <div class="gate"><b>Meses 3-4 · Cupo</b>Preaprobado y activación (A1, A3, A7). La analista revisa el 100 % de los casos al inicio.<span class="g">G2: 0 escrituras no autorizadas; handoff 8-15 %; conversión ≥ 25 %</span></div>
+    <div class="gate"><b>Meses 5-6 · Uso</b>Uso y abono con mandato (A4). Se mide utilización, mora y spread real.<span class="g">G3: escalar, ajustar o cerrar</span></div>
+  </div>
+  <p style="margin-top:4px"><b>Indicadores:</b> activación de la tesorería, conversión y utilización (producto); NPS y tiempo a la decisión (experiencia); precisión, tasa de handoff y falsos positivos de anomalía (calidad del agente); costo de IA por cliente (costo); mora 30+ y pérdida (riesgo); 0 hallazgos en SARLAFT y consentimiento (cumplimiento).</p>
+
+  <h2><span class="n">9</span>Riesgos principales y mitigación</h2>
+  <table>
+    <tr><th>Riesgo</th><th>Mitigación</th></tr>
+    <tr><td>Spread insuficiente con 14,9 % fijo</td><td>Compensación de fomento o tasa indexada al IBR, decidida antes del mes 1</td></tr>
+    <tr><td>Baja conversión o utilización</td><td>La alerta del faltante lleva la oferta; prueba A/B; compuerta G2</td></tr>
+    <tr><td>Fraude documental o facturas ficticias</td><td>Conciliación con extractos y RADIAN; tolerancia de 20 %; handoff; muestra mensual</td></tr>
+    <tr><td>Inyección de instrucciones o abuso del agente</td><td>Gateway con lista cerrada, mandato firmado y red teaming como compuerta</td></tr>
+    <tr><td>Acceso a datos (Siigo, RADIAN, finanzas abiertas)</td><td>Acuerdos en G0; extractos en PDF como respaldo</td></tr>
+    <tr><td>Capacidad humana ante los handoffs</td><td>El copiloto duplica la productividad; dimensionado con 8-15 % de handoff</td></tr>
+  </table>
+
+  <h2><span class="n">10</span>Lo que el banco debe resolver antes de escalar</h2>
+  <ul>
+    <li>Tasa y compensación de fomento; tratamiento de capital con la garantía del FNG.</li>
+    <li>Residencia de datos y proveedor de modelos (Ley 1581, art. 26); gobierno de modelos y comité de IA.</li>
+    <li>Umbrales de la política (20 %, $100 M, tamaño de la muestra); retención de conversaciones y bitácora.</li>
+    <li>Cómo documentar SARLAFT cuando un agente ejecuta los controles; comunicación con la SFC sobre el uso de IA.</li>
+  </ul>
+  <div class="box"><b>Supuestos, no certezas:</b> PD, utilización, conversión, CAC y la ponderación de capital son supuestos propios. Cada uno tiene experimento, métrica y umbral en la hoja <i>Validacion</i> del modelo. Los datos de mercado tienen la fuente citada en la hoja <i>Fuentes</i>.</div>
+</div>
+</div>
+
+<footer>
+  <span><b>Prototipo:</b> <a href="https://auro-prototipo.onrender.com">auro-prototipo.onrender.com</a> · anexos: arquitectura agéntica, modelo financiero (xlsx), declaración de uso de IA y proceso de diseño.</span>
+  <span>Uso de IA: Claude Design y Claude Code, bajo decisión y revisión de la autora.</span>
+</footer>
+</section>
+</body>
+</html>
