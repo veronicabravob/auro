@@ -11,6 +11,7 @@ Propuesta para la prueba técnica **AI Product Engineer · Banca Pyme**: un banc
 | 01 | Prototipo funcional (18 pantallas, 3 caminos de excepción, responsive) | [sitio en Render](https://auro-prototipo.onrender.com) · fuente en `site/` |
 | 02 | Resumen ejecutivo (2 páginas) | `entregables/resumen-ejecutivo/resumen-ejecutivo-auro.pdf` |
 | 03 | Modelo financiero a 3 años (fórmulas visibles, escenarios, sensibilidad) | `entregables/modelo-financiero/modelo-financiero-auro.xlsx` |
+| — | Roadmap del piloto de 6 meses (fases, dependencias, compuertas, indicadores, personas y gobierno) | `entregables/roadmap/roadmap-auro.html` · `roadmap-auro.pdf` |
 | — | Declaración de uso de IA + anexo del proceso de diseño | `entregables/declaracion-uso-ia/declaracion-uso-ia-auro.pdf` |
 | — | Arquitectura agéntica y de la solución | `entregables/arquitectura/arquitectura-auro.html` (fuente `.md`) |
 

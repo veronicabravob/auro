@@ -107,6 +107,8 @@ DELIVERABLES = {
     "resumen-ejecutivo-auro.pdf": "entregables/resumen-ejecutivo/resumen-ejecutivo-auro.pdf",
     "modelo-financiero-auro.xlsx": "entregables/modelo-financiero/modelo-financiero-auro.xlsx",
     "arquitectura-auro.html": "entregables/arquitectura/arquitectura-auro.html",
+    "roadmap-auro.html": "entregables/roadmap/roadmap-auro.html",
+    "roadmap-auro.pdf": "entregables/roadmap/roadmap-auro.pdf",
     "declaracion-uso-ia-auro.pdf": "entregables/declaracion-uso-ia/declaracion-uso-ia-auro.pdf",
 }
 

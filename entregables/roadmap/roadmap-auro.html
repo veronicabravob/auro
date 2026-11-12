@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auro by BFE · Roadmap del piloto</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 12mm 12mm 11mm; }
+  :root { --ink:#1B1533; --mut:#4B4470; --pur:#6A48F5; --pur2:#4B2FD6; --lil:#F7F5FF; --lil2:#F1ECFF; --line:#E1DAF7; --gold:#FFC83D; --gold2:#FFF3D1; --grn:#0B5E47; --grn2:#E3F6EE; --red:#8F1D12; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #fff; }
+  body { margin: 0; font-family: 'Outfit', system-ui, sans-serif; color: var(--ink); background: #fff; font-size: 14px; line-height: 1.5; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 24px 40px; }
+  header.top { display: flex; align-items: center; gap: 12px; border-bottom: 3px solid var(--pur); padding-bottom: 10px; margin-bottom: 16px; }
+  header.top h1 { margin: 0; font-size: 26px; letter-spacing: -0.02em; line-height: 1.15; }
+  header.top .sub { color: var(--mut); font-size: 14px; }
+  h2 { font-size: 19px; color: var(--pur2); margin: 26px 0 8px; letter-spacing: -0.01em; break-after: avoid; }
+  h2 .n { display: inline-block; background: var(--pur); color: #fff; border-radius: 99px; font-size: 12px; padding: 1px 9px; margin-right: 6px; vertical-align: 2px; }
+  h3 { font-size: 15px; margin: 0 0 4px; }
+  p { margin: 0 0 8px; }
+  ul { margin: 4px 0 8px; padding-left: 18px; } li { margin: 2px 0; }
+  .lead { background: var(--pur); color: #fff; border-radius: 16px; padding: 16px 20px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px; }
+  .lead .k { color: var(--gold); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+  .lead .big { font-size: 19px; font-weight: 600; line-height: 1.3; margin: 2px 0 6px; }
+  .lead ul { padding-left: 16px; margin: 4px 0 0; }
+  .note { color: var(--mut); font-size: 12.5px; }
+  .box { background: var(--lil); border-radius: 12px; padding: 10px 14px; }
+  .box.gold { background: var(--gold2); }
+  .scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; color: var(--mut); font-weight: 600; border-bottom: 1.5px solid var(--line); padding: 6px 8px; vertical-align: bottom; }
+  td { border-bottom: 1px solid #EEEAFB; padding: 6px 8px; vertical-align: top; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; border-radius: 99px; padding: 1px 8px; background: var(--lil2); color: var(--pur2); white-space: nowrap; }
+  .tag.g { background: var(--grn2); color: var(--grn); } .tag.y { background: var(--gold2); color: #6B4A00; }
+
+  /* Gantt */
+  .gantt { min-width: 760px; display: grid; grid-template-columns: 190px repeat(7, 1fr); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; font-size: 12px; }
+  .gantt .h { background: var(--lil); font-weight: 600; padding: 7px 6px; text-align: center; border-bottom: 1px solid var(--line); }
+  .gantt .h small { display: block; font-weight: 400; color: var(--mut); font-size: 10.5px; }
+  .gantt .h.l { text-align: left; padding-left: 10px; }
+  .gantt .row { display: contents; }
+  .gantt .lab { padding: 6px 10px; border-bottom: 1px solid #EEEAFB; font-weight: 600; background: #fff; display: flex; align-items: center; }
+  .gantt .lane { grid-column: 2 / span 7; position: relative; border-bottom: 1px solid #EEEAFB; display: grid; grid-template-columns: repeat(7, 1fr); align-items: center; padding: 5px 0; min-height: 34px;
+    background-image: linear-gradient(to right, #F1ECFF 1px, transparent 1px); background-size: calc(100% / 7) 100%; }
+  .bar { margin: 2px 3px; border-radius: 7px; padding: 3px 7px; font-size: 11px; line-height: 1.25; color: #fff; background: var(--pur); font-weight: 500; }
+  .bar.l { background: #B7A6FA; color: var(--ink); }
+  .bar.y { background: var(--gold); color: var(--ink); }
+  .bar.g { background: #23946F; }
+  .bar.d { background: #fff; color: var(--pur2); border: 1.5px dashed var(--pur); }
+  .gates { grid-column: 1 / span 8; display: grid; grid-template-columns: 190px repeat(7, 1fr); background: var(--ink); color: #fff; font-size: 11.5px; }
+  .gates div { padding: 6px; text-align: center; }
+  .gates .gt { font-weight: 700; color: var(--gold); }
+
+  .phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .ph { border: 1px solid var(--line); border-top: 4px solid var(--pur); border-radius: 12px; padding: 10px 12px; font-size: 13px; }
+  .ph .when { color: var(--mut); font-size: 12px; }
+  .ph .gate { margin-top: 6px; background: var(--lil2); border-radius: 8px; padding: 6px 8px; font-size: 12px; }
+  .ph .gate b { color: var(--pur2); }
+  .cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  footer { margin-top: 26px; border-top: 1px solid var(--line); padding-top: 10px; color: var(--mut); font-size: 12px; }
+  a { color: var(--pur2); }
+
+  @media screen and (max-width: 760px) {
+    .wrap { padding: 18px 16px 32px; }
+    .lead, .cols2 { grid-template-columns: 1fr; }
+    .phases { grid-template-columns: 1fr 1fr; }
+    header.top h1 { font-size: 21px; }
+    table { font-size: 12.5px; }
+    .tw { min-width: 640px; }
+  }
+  @media screen and (max-width: 480px) { .phases { grid-template-columns: 1fr; } }
+  @media print {
+    body { font-size: 10.5px; }
+    .wrap { max-width: none; padding: 0; }
+    header.top h1 { font-size: 20px; }
+    h2 { font-size: 14px; margin: 14px 0 5px; }
+    table { font-size: 9.8px; } th, td { padding: 3px 5px; }
+    .gantt { min-width: 0; font-size: 9.5px; grid-template-columns: 140px repeat(7, 1fr); }
+    .gates { grid-template-columns: 140px repeat(7, 1fr); font-size: 9px; }
+    .bar { font-size: 8.8px; padding: 2px 5px; }
+    .lead { padding: 10px 14px; } .lead .big { font-size: 14px; }
+    .ph { font-size: 10px; padding: 7px 9px; } .ph .gate { font-size: 9.5px; }
+    .note { font-size: 9.5px; }
+    tr, .ph, .gantt, .box, .lead { break-inside: avoid; }
+    h2 { break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <svg width="40" height="40" viewBox="0 0 48 48" aria-hidden="true"><circle cx="22" cy="27" r="15" fill="none" stroke="#6A48F5" stroke-width="9"/><circle cx="33" cy="16" r="7.5" fill="#FFC83D"/></svg>
+  <div>
+    <h1>Auro by BFE · Roadmap del piloto de 6 meses</h1>
+    <div class="sub">Delivery y gobierno: fases, dependencias, compuertas de decisión, indicadores y el rol de las personas</div>
+  </div>
+</header>
+
+<div class="lead">
+  <div>
+    <div class="k">Qué se decide con este plan</div>
+    <div class="big">En 6 meses (enero a junio de 2027) se prueba con empresas reales si los tres supuestos que deciden el caso se cumplen. Solo así se escala.</div>
+    <p style="margin:0">Un piloto cerrado con un gremio manufacturero y un software contable aliado, con unas 70 empresas nuevas al mes (cerca de 420 en total, supuesto base del modelo). La autonomía de los agentes solo sube cuando los evals lo justifican.</p>
+  </div>
+  <div>
+    <div class="k">Compuerta final (G3, junio de 2027)</div>
+    <ul>
+      <li>Spread de al menos 4 p.p. sobre el fondeo, o compensación aprobada.</li>
+      <li>Utilización del cupo de al menos 30 % a 90 días.</li>
+      <li>Conversión de preaprobado a cupo de al menos 25 % en 60 días.</li>
+      <li>Mora 30+ de máximo 3 % y 0 escrituras no autorizadas.</li>
+    </ul>
+  </div>
+</div>
+
+<section>
+<h2><span class="n">1</span>Cronograma por frente de trabajo</h2>
+<div class="scroll">
+<div class="gantt" role="img" aria-label="Cronograma de diciembre de 2026 a junio de 2027 por frente de trabajo, con las compuertas G0 a G3">
+  <div class="h l">Frente de trabajo</div>
+  <div class="h">Mes 0<small>dic 2026</small></div>
+  <div class="h">Mes 1<small>ene 2027</small></div>
+  <div class="h">Mes 2<small>feb</small></div>
+  <div class="h">Mes 3<small>mar</small></div>
+  <div class="h">Mes 4<small>abr</small></div>
+  <div class="h">Mes 5<small>may</small></div>
+  <div class="h">Mes 6<small>jun</small></div>
+
+  <div class="row"><div class="lab">Decisiones del banco</div>
+    <div class="lane"><div class="bar y" style="grid-column:1 / span 1">Tasa, SARLAFT con IA, comité de IA</div><div class="bar d" style="grid-column:2 / span 3">Prueba de precio 14,9 % vs 16,5 %</div></div></div>
+
+  <div class="row"><div class="lab">Producto: tesorería</div>
+    <div class="lane"><div class="bar l" style="grid-column:1 / span 1">Construir MVP</div><div class="bar" style="grid-column:2 / span 6">Piloto: caja de 13 semanas, alertas y acciones</div></div></div>
+
+  <div class="row"><div class="lab">Producto: cupo</div>
+    <div class="lane"><div class="bar l" style="grid-column:1 / span 2">Construir preaprobado y activación</div><div class="bar" style="grid-column:3 / span 4">Preaprobado → 7 controles → activación</div></div></div>
+
+  <div class="row"><div class="lab">Producto: uso y abono</div>
+    <div class="lane"><div class="bar l" style="grid-column:2 / span 3">Construir mandato, pagos y abono</div><div class="bar" style="grid-column:5 / span 2">Uso y abono con mandato</div></div></div>
+
+  <div class="row"><div class="lab">Agentes y evals</div>
+    <div class="lane"><div class="bar l" style="grid-column:1 / span 1">Sets dorados</div><div class="bar g" style="grid-column:2 / span 1">A0 A2 A5 A6</div><div class="bar g" style="grid-column:3 / span 2">+ A1 A3 A7</div><div class="bar g" style="grid-column:5 / span 2">+ A4 · bajar revisión al 30 %</div></div></div>
+
+  <div class="row"><div class="lab">Seguridad y red team</div>
+    <div class="lane"><div class="bar y" style="grid-column:2 / span 1">Red team externo</div><div class="bar d" style="grid-column:3 / span 4">Banco de más de 1.000 ataques en cada release</div></div></div>
+
+  <div class="row"><div class="lab">Datos e integraciones</div>
+    <div class="lane"><div class="bar l" style="grid-column:1 / span 2">Siigo, buzón de facturas, DIAN</div><div class="bar l" style="grid-column:3 / span 2">RADIAN, listas, centrales</div><div class="bar l" style="grid-column:5 / span 2">Pagos idempotentes y FNG</div></div></div>
+
+  <div class="row"><div class="lab">Riesgo y cumplimiento</div>
+    <div class="lane"><div class="bar l" style="grid-column:1 / span 2">Política, backtesting de PD</div><div class="bar d" style="grid-column:3 / span 4">Mora 30+ por cohorte · muestra mensual</div></div></div>
+
+  <div class="row"><div class="lab">Operación (personas)</div>
+    <div class="lane"><div class="bar l" style="grid-column:1 / span 1">Contratar y entrenar</div><div class="bar" style="grid-column:2 / span 2">2 soporte</div><div class="bar" style="grid-column:4 / span 3">+ 2 analistas, 2 cumplimiento, SLA de handoff</div></div></div>
+
+  <div class="row"><div class="lab">Adquisición</div>
+    <div class="lane"><div class="bar l" style="grid-column:1 / span 1">Convenios</div><div class="bar" style="grid-column:2 / span 6">Gremio, contadores y software aliado: CAC por canal</div></div></div>
+
+  <div class="gates">
+    <div style="text-align:left;padding-left:10px">Compuertas</div>
+    <div><span class="gt">G0</span> fin de dic</div><div></div>
+    <div><span class="gt">G1</span> fin de feb</div><div></div>
+    <div><span class="gt">G2</span> fin de abr</div><div></div>
+    <div><span class="gt">G3</span> fin de jun</div>
+  </div>
+</div>
+</div>
+<p class="note" style="margin-top:6px">Barras moradas: piloto en operación. Lila: construcción o integración. Verde: agentes habilitados. Oro: hitos de decisión o seguridad. Punteadas: medición continua. El modelo financiero registra la inversión de construcción (≈ COP 4.050 M, unas 10 personas durante 6 meses) en el año 0 para simplificar; en la ejecución, la construcción se escalona como muestra el cronograma: la tesorería primero, porque es solo lectura y tiene menor riesgo.</p>
+</section>
+
+<section>
+<h2><span class="n">2</span>Fases, alcance y compuertas</h2>
+<div class="phases">
+  <div class="ph"><div class="when">Mes 0 · diciembre 2026</div><h3>Habilitar</h3>
+    <ul><li>Comité decide tasa y compensación de fomento, o tasa indexada al IBR.</li><li>Firma de convenios: gremio, software aliado, RADIAN.</li><li>Procedimiento SARLAFT con agentes aprobado por cumplimiento.</li><li>Comité de IA y riesgo constituido; sets dorados listos.</li></ul>
+    <div class="gate"><b>G0 · Arrancar piloto.</b> Decisiones firmadas, convenios de datos activos y política de crédito cargada en el motor.</div></div>
+  <div class="ph"><div class="when">Meses 1-2 · ene-feb 2027</div><h3>Tesorería gratuita</h3>
+    <ul><li>Registro con NIT, conexión de fuentes, caja de 13 semanas, alertas y acciones.</li><li>Agentes A0, A2, A5 y A6: solo informan y redactan. No hay crédito todavía.</li><li>Red team externo antes de abrir.</li></ul>
+    <div class="gate"><b>G1 · Abrir el cupo.</b> Precisión de extracción ≥ 98 %; ≥ 50 % de empresas con 12 meses de facturas en 7 días; recall de faltantes ≥ 85 %.</div></div>
+  <div class="ph"><div class="when">Meses 3-4 · mar-abr 2027</div><h3>Preaprobado y activación</h3>
+    <ul><li>Oferta dentro de la alerta del faltante (A/B con y sin oferta).</li><li>Agentes A1, A3 y A7. El motor aprueba por política y la <b>analista revisa el 100 %</b> de los casos.</li><li>Costo total con la comisión del FNG visible desde la oferta.</li></ul>
+    <div class="gate"><b>G2 · Habilitar uso y bajar la revisión.</b> 0 escrituras no autorizadas; recall de anomalías ≥ 95 %; handoff 8-15 %; conversión ≥ 25 %; abandono en la firma ≤ 15 %.</div></div>
+  <div class="ph"><div class="when">Meses 5-6 · may-jun 2027</div><h3>Uso, abono y medición</h3>
+    <ul><li>Uso del cupo hacia proveedores con factura o nómina, y abonos programados con mandato (A4).</li><li>La revisión humana baja del 100 % a muestra (handoff + 30 %) si G2 se cumplió.</li><li>Primeras cohortes con 90 días de utilización.</li></ul>
+    <div class="gate"><b>G3 · Escalar, ajustar o cerrar.</b> Spread ≥ 4 p.p.; utilización ≥ 30 %; mora 30+ ≤ 3 %; CAC ≤ COP 400.000 por usuario activo; costo de IA ≤ 2 veces lo diseñado.</div></div>
+</div>
+<div class="box" style="margin-top:10px"><b>Qué pasa en cada compuerta.</b> El comité de la línea revisa el tablero y decide entre <span class="tag g">avanzar</span>, <span class="tag y">ajustar y repetir la fase</span> o <span class="tag">parar</span>. Si una métrica crítica falla, se aplica la acción prevista en la hoja <i>Validacion</i> del modelo: indexar la tasa, bajar el cupo inicial, cambiar el momento de la oferta, priorizar conectores o que el BFE asuma parte de la comisión FNG. Luego se mide de nuevo antes de avanzar.</div>
+</section>
+
+<section class="pb">
+<h2><span class="n">3</span>Dependencias críticas</h2>
+<div class="scroll"><table class="tw">
+  <tr><th>Dependencia</th><th>Se necesita para</th><th>Responsable</th><th>Si se atrasa (plan B)</th></tr>
+  <tr><td>Decisión de tasa y compensación de fomento</td><td>G0 · todo el caso</td><td>Comité de la línea, tesorería BFE, MinCIT</td><td>Tasa indexada al IBR + margen; sin decisión no arranca el cupo</td></tr>
+  <tr><td>Convenio con Siigo (u otro software contable)</td><td>Mes 1 · tesorería</td><td>Producto y alianzas</td><td>Buzón de facturas + listado DIAN; conexión asistida por soporte</td></tr>
+  <tr><td>Acceso a RADIAN (acuses de facturas)</td><td>Mes 3 · control de anomalías</td><td>Datos y riesgo</td><td>Acuse pedido a la empresa + conciliación con extractos; más casos a la analista</td></tr>
+  <tr><td>Proveedores de identidad, listas y centrales</td><td>Mes 3 · 7 controles</td><td>Cumplimiento y compras</td><td>Proveedor actual del banco con los intermediarios</td></tr>
+  <tr><td>Procedimiento SARLAFT con agentes</td><td>G0</td><td>Oficial de cumplimiento</td><td>El agente prepara y la persona ejecuta el 100 % de los controles (más costo)</td></tr>
+  <tr><td>Integración con Pagos (idempotente) y FNG</td><td>Mes 5 · uso y abono</td><td>Tecnología del banco</td><td>Desembolso manual por la analista con mandato firmado; fase 5 más lenta</td></tr>
+  <tr><td>Residencia de datos y contrato con el proveedor de modelos</td><td>G0</td><td>Seguridad, legal y TI</td><td>Región y retención acordadas; no se abre con datos reales sin esto</td></tr>
+  <tr><td>Contratación de analistas, cumplimiento y soporte</td><td>Meses 1-3</td><td>Gerencia de la línea</td><td>Analistas del área de redescuento en comisión durante el piloto</td></tr>
+</table></div>
+</section>
+
+<section>
+<h2><span class="n">4</span>Indicadores del piloto</h2>
+<div class="scroll"><table class="tw">
+  <tr><th>Dimensión</th><th>Indicador</th><th>Meta</th><th>Alerta</th><th>Compuerta</th></tr>
+  <tr><td>Adopción</td><td>Empresas con 12 meses de facturas conectados en 7 días</td><td>≥ 50 %</td><td>&lt; 35 %</td><td>G1</td></tr>
+  <tr><td>Adopción</td><td>CAC por usuario activo, por canal</td><td>≤ COP 400.000</td><td>&gt; COP 550.000</td><td>G3</td></tr>
+  <tr><td>Producto</td><td>Conversión de preaprobado a cupo en 60 días</td><td>≥ 25 %</td><td>&lt; 15 %</td><td>G2 · G3</td></tr>
+  <tr><td>Producto</td><td>Utilización promedio del cupo a 90 días</td><td>≥ 30 %</td><td>&lt; 20 %</td><td>G3</td></tr>
+  <tr><td>Experiencia</td><td>Tiempo de activación sin anomalía (p75)</td><td>≤ 15 min</td><td>&gt; 20 min</td><td>G2</td></tr>
+  <tr><td>Experiencia</td><td>Respuestas útiles (pulgar arriba + muestra humana)</td><td>≥ 85 %</td><td>&lt; 75 %</td><td>G1 · G2</td></tr>
+  <tr><td>Calidad de agentes</td><td>Precisión de extracción por campo / valores monetarios</td><td>≥ 98 % / ≥ 99,5 %</td><td>&lt; 97 % en una semana</td><td>G1</td></tr>
+  <tr><td>Calidad de agentes</td><td>Recall de anomalías / falsos positivos</td><td>≥ 95 % / ≤ 30 % de las enviadas</td><td>FP &gt; 40 %</td><td>G2</td></tr>
+  <tr><td>Calidad de agentes</td><td>Tasa de handoff a persona</td><td>8-15 %</td><td>&gt; 20 % o &lt; 5 %</td><td>G2</td></tr>
+  <tr><td>Costo</td><td>Costo de IA por cliente con cupo al mes</td><td>≈ US$1,3</td><td>&gt; 2 veces lo diseñado</td><td>G3</td></tr>
+  <tr><td>Riesgo</td><td>Mora 30+ a 6 meses por cohorte</td><td>≤ 3 %</td><td>&gt; 4 %</td><td>G3</td></tr>
+  <tr><td>Riesgo</td><td>Escrituras sin mandato / rechazo de instrucciones maliciosas</td><td>0 / ≥ 99,5 %</td><td>Cualquier caso = incidente</td><td>G1 · G2 · G3</td></tr>
+  <tr><td>Cumplimiento</td><td>Controles marcados como cumplidos sin evidencia; SLA de handoff</td><td>0; ≥ 95 % en SLA</td><td>&lt; 90 % en SLA</td><td>G2 · G3</td></tr>
+</table></div>
+</section>
+
+<section>
+<h2><span class="n">5</span>El rol de las personas y el gobierno de decisiones</h2>
+<div class="cols2">
+<div>
+  <div class="scroll"><table>
+    <tr><th>Rol (piloto)</th><th>Qué hace y qué decide</th></tr>
+    <tr><td><b>Comité de la línea</b> (gerencia, riesgo, tesorería, cumplimiento)</td><td>Decide en cada compuerta. Aprueba la política de crédito y la tasa.</td></tr>
+    <tr><td><b>Comité de IA y riesgo de modelos</b></td><td>Aprueba cada agente y cada cambio de modelo o de autonomía, con evidencia de los evals.</td></tr>
+    <tr><td><b>Analistas de crédito</b> (2)</td><td>Deciden los casos con anomalía, cupos mayores a $100 M y la muestra mensual. Pueden revertir lo que propone el agente.</td></tr>
+    <tr><td><b>Cumplimiento</b> (2)</td><td>Resuelven coincidencias en listas y SARLAFT. Auditan la bitácora.</td></tr>
+    <tr><td><b>Soporte</b> (2)</td><td>Atienden cuando la empresa pide una persona y asisten la conexión de datos.</td></tr>
+    <tr><td><b>Producto y tecnología</b> (6) + gerencia de la línea (2)</td><td>Construyen, operan los evals y revisan los errores cada semana.</td></tr>
+  </table></div>
+  <p class="note">Equipo de 14 personas en el piloto, consistente con el modelo financiero: mínimos de 2 analistas, 2 de cumplimiento y 2 de soporte; 6 de producto y tecnología; 2 de gerencia, riesgo y modelos.</p>
+</div>
+<div>
+  <h3>Cómo se gobierna la autonomía</h3>
+  <ul>
+    <li><b>Nunca es del agente:</b> aprobar, negar o fijar monto y tasa (motor + comité); mover dinero sin el mandato del cliente (Pagos); resolver coincidencias en listas (cumplimiento).</li>
+    <li><b>Sube por evidencia:</b> la revisión humana empieza en el 100 % de las activaciones y baja a handoff + 30 % solo si se cumple G2. Bajar más requiere 3 meses dentro de las metas y aprobación del comité de IA.</li>
+    <li><b>Rituales:</b> revisión semanal de errores (producto, crédito y cumplimiento), muestra mensual auditada por las analistas, red team en cada release y tablero por compuerta.</li>
+    <li><b>Freno de emergencia:</b> cualquier escritura no autorizada o un salto de mora detiene el agente o la fase. El flujo vuelve a operación manual mientras se investiga.</li>
+  </ul>
+  <div class="box gold"><b>Restricciones y decisiones antes de escalar:</b> residencia de datos y proveedor de modelos (Ley 1581, art. 26); tratamiento de capital con la garantía del FNG; umbrales de la política (20 %, $100 M, tamaño de la muestra); retención frente a "Borrar todo"; comunicación con la SFC sobre el uso de IA; capacidad humana para el handoff esperado al pasar de manufactura a otros sectores.</div>
+</div>
+</div>
+</section>
+
+<footer>
+  Prototipo: <a href="https://auro-prototipo.onrender.com">auro-prototipo.onrender.com</a> ·
+  Coherente con el <a href="modelo-financiero-auro.xlsx">modelo financiero</a> (hojas Funnel y Validacion) y con la <a href="arquitectura-auro.html">arquitectura agéntica</a> (secciones 11 y 13). Las metas son supuestos para validar en el piloto, no certezas.
+</footer>
+
+</div>
+</body>
+</html>
